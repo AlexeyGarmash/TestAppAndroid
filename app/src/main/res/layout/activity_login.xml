@@ -49,7 +49,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textInputLayoutUsername"
         app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@android:color/white"
         app:errorEnabled="true">
 
         <EditText

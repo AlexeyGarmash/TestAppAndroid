@@ -11,8 +11,11 @@ import com.example.testapp.R;
 import com.example.testapp.base.BaseApplication;
 import com.example.testapp.mvp.models.LogRegResponse;
 
-import java.util.ArrayList;
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
 
+import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class Utils {
@@ -47,6 +50,19 @@ public class Utils {
         SharedPreferences preferences = PreferenceManager
                 .getDefaultSharedPreferences(BaseApplication.getsAppComponent().getContext());
         return preferences.getString(dataKey, null);
+    }
+
+    public static String convertDateTime(String inputDateTime){
+        DateTimeFormatter isoInstantFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        DateTimeFormatter isoInstantFormatterWithMs = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("EEE, MMM dd, yyyy HH:mm:ss", Locale.US);
+        LocalDateTime dateTime;
+        try{
+            dateTime = LocalDateTime.parse(inputDateTime, isoInstantFormatterWithMs);
+        } catch (Exception ex){
+            dateTime = LocalDateTime.parse(inputDateTime, isoInstantFormatter);
+        }
+        return dateTime.format(outputFormatter);
     }
 
 

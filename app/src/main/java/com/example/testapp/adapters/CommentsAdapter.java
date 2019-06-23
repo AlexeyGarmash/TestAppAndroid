@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testapp.R;
+import com.example.testapp.common.Utils;
 import com.example.testapp.mvp.models.Comment;
 
 import java.util.ArrayList;
@@ -60,8 +61,11 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
 
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
+        String inputDateTime = comments.get(position).getCreatedAt();
+        String convertedDateTime = Utils.convertDateTime(inputDateTime);
+
         holder.mRatingBar.setRating(comments.get(position).getRate());
-        holder.mTextViewCreatedAt.setText(comments.get(position).getCreatedAt());
+        holder.mTextViewCreatedAt.setText(convertedDateTime);
         holder.mTextViewTextComment.setText(comments.get(position).getText());
         holder.mTextViewUser.setText(comments.get(position).getCreatedBy().getUsername());
 
