@@ -10,6 +10,9 @@ import com.example.testapp.mvp.views.CommentsView;
 import com.example.testapp.retrofit.Paths;
 import com.example.testapp.retrofit.TestAppService;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -39,7 +42,7 @@ public class CommentsPresenter extends BasePresenter<CommentsView> {
     }
 
     private void getCommentsFromApi(int productId) {
-        getViewState().showError("Product ID:" + productId);
+        //getViewState().showError("Product ID:" + productId);
         getViewState().showRefreshing();
         unsubscribeOnDestroy(mTestAppService.getComments(productId)
                 .subscribeOn(Schedulers.io())
@@ -66,7 +69,9 @@ public class CommentsPresenter extends BasePresenter<CommentsView> {
     }
 
     private void onLoadingSuccess(Comment[] comments){
-        getViewState().showComments(Utils.arrayToList(comments));
+        ArrayList<Comment> commentsList = Utils.arrayToList(comments);
+        Collections.reverse(commentsList);
+        getViewState().showComments(commentsList);
     }
 
     private void onLoadingFailed(Throwable throwable){

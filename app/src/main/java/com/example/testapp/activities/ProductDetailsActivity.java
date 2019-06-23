@@ -99,10 +99,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
         mProduct = getProductIntent();
-        if(mProduct != null){
-            showInfo(mProduct.getTitle());
-        }
-        else {
+        if(mProduct == null){
+            //showInfo(mProduct.getTitle());
             showInfo("OOPS...");
             return;
         }
