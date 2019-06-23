@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,9 @@ public class ProductsFragment extends MvpAppCompatFragment implements AllProduct
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
 
+    @BindView(R.id.swipeRefreshProducts)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     ProductsAdapter mProductsAdapter;
 
     @InjectPresenter
@@ -105,6 +109,9 @@ public class ProductsFragment extends MvpAppCompatFragment implements AllProduct
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        mSwipeRefreshLayout.setOnRefreshListener(()->{
+            mProductsPresenter.loadProducts();
+        });
         products = new ArrayList<>();
         mRecyclerViewProducts.requestFocus();
         mProductsAdapter = new ProductsAdapter(products, this);
@@ -149,11 +156,13 @@ public class ProductsFragment extends MvpAppCompatFragment implements AllProduct
     @Override
     public void showRefreshing() {
         mProgressBar.setVisibility(View.VISIBLE);
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideRefreshing() {
         mProgressBar.setVisibility(View.GONE);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

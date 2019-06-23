@@ -79,7 +79,7 @@ public class ProductDetailsPresenter extends BasePresenter<ProductDetailsView> {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("SEND COMMENT::::::::::", " SEND COMMENT FAIL CALLBACK");
+                        Log.e("SEND COMMENT::::::::::", " SEND COMMENT FAIL CALLBACK");
                         onSendFailed(e);
                     }
                 }));

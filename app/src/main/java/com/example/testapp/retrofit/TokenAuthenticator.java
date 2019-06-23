@@ -71,7 +71,7 @@ public class TokenAuthenticator implements Authenticator {
             }
             else {
                 Utils.saveUserDataToPrefs(Common.KEY_TOKEN ,null);
-                Log.i("AUTH METHOD::::::::::", "WE ARE IN FAIIIIIIILED");
+                Log.e("AUTH METHOD::::::::::", "WE ARE IN FAIIIIIIILED");
             }
         }
         //compositeDisposable.clear();

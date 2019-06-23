@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,9 @@ public class CommentsFragment extends MvpAppCompatFragment implements CommentsVi
 
     @BindView(R.id.progressBarComments)
     ProgressBar mProgressBarComments;
+
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     private CommentsAdapter mCommentsAdapter;
 
@@ -92,6 +96,13 @@ public class CommentsFragment extends MvpAppCompatFragment implements CommentsVi
         mRecyclerViewComments.setAdapter(mCommentsAdapter);
         mRecyclerViewComments.addItemDecoration(new DividerItemDecoration(getContext(),
                 DividerItemDecoration.VERTICAL));
+        mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            mCommentsPresenter.loadComments();
+        });
     }
 
     @Override
@@ -130,10 +141,12 @@ public class CommentsFragment extends MvpAppCompatFragment implements CommentsVi
     @Override
     public void showRefreshing() {
         mProgressBarComments.setVisibility(View.VISIBLE);
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideRefreshing() {
         mProgressBarComments.setVisibility(View.GONE);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }
