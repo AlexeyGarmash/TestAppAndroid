@@ -26,11 +26,11 @@ public class ProductsPresenter extends BasePresenter<AllProductsView> {
         BaseApplication.getsAppComponent().inject(this);
     }
 
-    @Override
+    /*@Override
     protected void onFirstViewAttach(){
         super.onFirstViewAttach();
         loadProducts();
-    }
+    }*/
 
     public void loadProducts() {
         getProductsFromApi();

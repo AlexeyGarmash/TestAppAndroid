@@ -106,6 +106,12 @@ public class CommentsFragment extends MvpAppCompatFragment implements CommentsVi
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mCommentsPresenter.loadComments();
+    }
+
+    @Override
     public void showComments(ArrayList<Comment> comments) {
         clearComments();
         mComments.addAll(comments);

@@ -28,11 +28,11 @@ public class CommentsPresenter extends BasePresenter<CommentsView> {
         BaseApplication.getsAppComponent().inject(this);
     }
 
-    @Override
+    /*@Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
         loadComments();
-    }
+    }*/
 
     public void loadComments() {
         getCommentsFromApi(mProduct.getId());
