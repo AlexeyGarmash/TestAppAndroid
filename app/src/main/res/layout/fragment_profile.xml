@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_marginBottom="20dp"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="#fff"
+        app:title="Profile"/>
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/loggedOnPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+        <TextView
+            android:id="@+id/textStubUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:text="You signed in as: "/>
+        <TextView
+            android:id="@+id/textAsUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fsfsdfsdf"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-black"
+            android:layout_toRightOf="@+id/textStubUsername"/>
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:text="Log out"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textAsUsername"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loginPart"
+        android:paddingLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        >
+    <Button
+        android:id="@+id/btnGoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log in"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <Button
+        android:id="@+id/btnGoRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_below="@+id/btnGoLogin"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+    <Button
+        android:id="@+id/btnSetTokenNull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:text="Set token null"
+        android:layout_below="@+id/btnGoRegister"/>
+    </RelativeLayout>
+
+</RelativeLayout>

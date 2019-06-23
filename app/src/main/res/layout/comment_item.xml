@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/tvCommentUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:text="user1"/>
+    <TextView
+        android:id="@+id/tvCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2019-06-19T13:00:26.209Z:"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/tvTextComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lorem ipphvbsdf  sbg sn gbsb"
+        android:maxLines="3"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/tvCommentUser"
+        />
+    <RatingBar
+        style = "?android:attr/ratingBarStyleIndicator"
+        android:id="@+id/rbRating"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTextComment"/>
+
+</RelativeLayout>

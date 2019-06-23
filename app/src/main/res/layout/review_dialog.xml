@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:singleLine="false"
+            android:hint="Comment"
+            android:maxLines="3"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RatingBar
+        android:stepSize="1"
+        android:id="@+id/rateComment"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayout"/>
+
+    <Button
+        android:id="@+id/btnSendComment_Dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="store comment"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_below="@+id/rateComment"/>
+
+</RelativeLayout>
